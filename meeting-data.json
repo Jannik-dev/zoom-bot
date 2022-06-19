@@ -1,0 +1,12 @@
+{
+   "zoom_data": [
+      {
+         "course_id": "someId",
+         "course": "The name of the course",
+         "abbreviation": "A abbreviation of the course",
+         "professor": "The name of the professor",
+         "meeting_id": "The Zoom meeting Id",
+         "password": "The password for the zoom meeting"
+      }
+   ]
+}
