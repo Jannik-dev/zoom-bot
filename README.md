@@ -4,12 +4,8 @@ Zoom Bot enables you to manage your Zoom meetings in one place. It fakes user in
 
 [![Watch the video](https://img.youtube.com/vi/s1vb9bwupcE/maxresdefault.jpg)](https://youtu.be/s1vb9bwupcE)
 
-# Installation
-The project uses the Edge web driver. If you want to use another browser than Edge, please change it accordingly. For more information, please refer to this page:
-https://pypi.org/project/webdriver-manager/
-
 ### Important!
-Depending on the browser and language you are using, the images may have to be adjusted.
+Depending on language you are using, the image of the zoom window might have to be adjusted.
 
 ## Packages
 Python and pip have to be installed and setup.
