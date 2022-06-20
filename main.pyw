@@ -1,4 +1,4 @@
-import pyautogui as py
+import pyautogui as autogui
 import json
 import tkinter as tk
 import os
@@ -41,10 +41,10 @@ def joinMeeting(zoomData):
     subprocess.Popen(getPlatfromCommand(platform.system(), zoomData), shell=True)
 
     # enter passcode
-    enter_meeting_passcode = py.locateCenterOnScreen('img/enter-meeting-passcode.png', confidence=0.7)
+    enter_meeting_passcode = autogui.locateCenterOnScreen('img/enter-meeting-passcode.png', confidence=0.7)
     while enter_meeting_passcode == None:
-        enter_meeting_passcode = py.locateCenterOnScreen('img/enter-meeting-passcode.png', confidence=0.7)
-    py.write(zoomData.pwd)
+        enter_meeting_passcode = autogui.locateCenterOnScreen('img/enter-meeting-passcode.png', confidence=0.7)
+    autogui.write(zoomData.pwd)
 
 
 zoomDataEntries = getZoomDataEntries()
