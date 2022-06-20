@@ -1,4 +1,2 @@
-webdriver-manager==3.7.0
-selenium==4.2.0
 PyAutoGUI==0.9.53
 opencv-python==4.6.0.66
