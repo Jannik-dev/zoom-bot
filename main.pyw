@@ -32,7 +32,10 @@ def getPlatfromCommand(x, zoomData):
         'Windows':"%APPDATA%\Zoom\\bin\Zoom.exe --url=\"zoommtg://zoom.us/join?action=join&confno=" + zoomData.meetingId + "\"",
         'Linux':"zoom --url=\"zoommtg://zoom.us/join?action=join&confno=" + zoomData.meetingId + "\"",
     }
-    return switcher.get(x,"Oops! Invalid Option")
+    val = switcher.get(x)
+    if val == None:
+        raise Exception("Unsupported platfrom!")
+    return val
 
 def joinMeeting(zoomData):
     subprocess.Popen(getPlatfromCommand(platform.system(), zoomData), shell=True)
