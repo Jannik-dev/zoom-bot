@@ -1,9 +1,13 @@
-import pyautogui as autogui
+#!/bin/env python
 import json
 import tkinter as tk
 import os
 import subprocess
 import platform
+
+if (platform.system() == "Windows"):
+    # autogui is only used on windows (right now) and adds scrot as a dependency on linux
+    import pyautogui as autogui
 
 
 class ZoomData:
@@ -30,7 +34,7 @@ def createCourseTitle(course):
 def getPlatfromCommand(x, zoomData):
     switcher = {
         'Windows':"%APPDATA%\Zoom\\bin\Zoom.exe --url=\"zoommtg://zoom.us/join?action=join&confno=" + zoomData.meetingId + "\"",
-        'Linux':"zoom --url=\"zoommtg://zoom.us/join?action=join&confno=" + zoomData.meetingId + "\"",
+        'Linux':"zoom \"zoommtg://zoom.us/join?action=join&confno=" + zoomData.meetingId + "\"",
     }
     val = switcher.get(x)
     if val == None:
@@ -41,10 +45,12 @@ def joinMeeting(zoomData):
     subprocess.Popen(getPlatfromCommand(platform.system(), zoomData), shell=True)
 
     # enter passcode
-    enter_meeting_passcode = autogui.locateCenterOnScreen('img/enter-meeting-passcode.png', confidence=0.7)
-    while enter_meeting_passcode == None:
+    # currently only works on Windows
+    if (platform.system() == "Windows"):
         enter_meeting_passcode = autogui.locateCenterOnScreen('img/enter-meeting-passcode.png', confidence=0.7)
-    autogui.write(zoomData.pwd)
+        while enter_meeting_passcode == None:
+            enter_meeting_passcode = autogui.locateCenterOnScreen('img/enter-meeting-passcode.png', confidence=0.7)
+        autogui.write(zoomData.pwd)
 
 
 zoomDataEntries = getZoomDataEntries()
